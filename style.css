@@ -87,3 +87,64 @@ td ul {
 .btn-notas { background-color: #6a6a6a; }
 .btn-word { background-color: #2b579a; }
 .btn-imagen { background-color: #00a693; }
+
+/* --- ESTILOS DEL NUEVO ENCABEZADO --- */
+
+/* Barra superior que contiene el logo y la navegación */
+.header-bar {
+    display: flex; /* Activa Flexbox para alinear elementos */
+    justify-content: space-between; /* Pone espacio entre el logo y la nav */
+    align-items: center; /* Centra los elementos verticalmente */
+    padding: 10px 20px;
+    border-bottom: 1px solid #e6c300; /* Línea dorada divisoria */
+    margin-bottom: 20px;
+}
+
+/* Contenedor del logo y el texto "Mi Tesis" */
+.logo-container {
+    font-size: 1.5em;
+    color: #e6c300;
+    font-weight: bold;
+}
+
+.logo-container i {
+    margin-right: 10px;
+}
+
+/* Estilos para los enlaces de navegación */
+nav a {
+    color: #f0f0f0;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 1.1em;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #e6c300; /* El enlace cambia a dorado al pasar el mouse */
+}
+
+/* Contenedor para el título principal y los nombres */
+.project-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Mantenemos el estilo del H1 que ya teníamos */
+.project-title h1 {
+    color: #ffffff;
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+/* Estilos para la sección de nombres de los alumnos */
+.student-names {
+    font-size: 1.2em;
+    color: #ccc;
+    font-style: italic;
+}
+
+/* Separación entre los nombres */
+.student-names span {
+    margin: 0 15px;
+}

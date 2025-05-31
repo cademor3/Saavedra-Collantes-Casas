@@ -3,231 +3,924 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cronograma de Tesis</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <title>Proyecto de Tesis 2 - Grupo 2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem 2rem;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff8c00;
+        }
+
+        .logo::before {
+            content: "🏛️";
+            margin-right: 0.5rem;
+        }
+
+        .university-info {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 140, 0, 0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 140, 0, 0.3);
+        }
+
+        .university-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #ff8c00;
+            margin-bottom: 1rem;
+        }
+
+        .advisor-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .advisor-photo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 3px solid #ff8c00;
+            object-fit: cover;
+            background: linear-gradient(135deg, #ff8c00, #ffa500);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .advisor-info {
+            text-align: left;
+        }
+
+        .advisor-title {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .advisor-name {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .deadline-alert {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            text-align: center;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.8;
+            }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 140, 0, 0.2);
+            color: #ff8c00;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff8c00, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .team-members {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .member {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.8rem 1.5rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .member:hover {
+            transform: translateY(-2px);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff8c00, #ffa500);
+            width: 25%;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        .timeline-container {
+            position: relative;
+        }
+
+        .timeline {
+            display: grid;
+            grid-template-columns: 80px 1fr 200px 200px 200px;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-header {
+            background: rgba(255, 140, 0, 0.2);
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: bold;
+            text-align: center;
+            border: 1px solid rgba(255, 140, 0, 0.3);
+        }
+
+        .timeline-row {
+            display: contents;
+        }
+
+        .week-number {
+            background: linear-gradient(135deg, #ff8c00, #ffa500);
+            color: #1a1a1a;
+            padding: 1.5rem 0.5rem;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3);
+        }
+
+        .theme-cell {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .theme-cell:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+            border-color: rgba(255, 140, 0, 0.3);
+        }
+
+        .theme-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #ff8c00;
+        }
+
+        .theme-list {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            line-height: 1.4;
+        }
+
+        .theme-list li {
+            margin-bottom: 0.3rem;
+        }
+
+        .action-button {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            border: none;
+            color: white;
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin: 0.2rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .action-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .action-button.notes {
+            background: linear-gradient(135deg, #6b7280, #374151);
+        }
+
+        .action-button.notes:hover {
+            box-shadow: 0 4px 15px rgba(107, 114, 128, 0.3);
+        }
+
+        .action-button.document {
+            background: linear-gradient(135deg, #1e40af, #1e3a8a);
+        }
+
+        .action-button.observation {
+            background: linear-gradient(135deg, #059669, #047857);
+        }
+
+        .action-button.observation:hover {
+            box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
+        }
+
+        .action-cell {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ff8c00;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .timeline {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .timeline-header {
+                display: none;
+            }
+
+            .team-members {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .title {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
-
-    <header>
-    <div class="header-bar">
-        <div class="logo-container">
-            <i class="fas fa-university"></i>
-            <span>Mi Tesis</span>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="logo">Mi Tesis</div>
+            <div class="nav-links">
+                <a href="#inicio">Inicio</a>
+                <a href="#cronograma">Cronograma</a>
+                <a href="#recursos">Recursos</a>
+                <a href="#acerca">Acerca de</a>
+            </div>
         </div>
-        <nav>
-            <a href="#">Inicio</a>
-            <a href="#">Cronograma</a>
-            <a href="#">Acerca de</a>
-        </nav>
-    </div>
-    <div class="project-title">
-        <h1>PROYECTO DE TESIS 2 - GRUPO 2</h1>
-        <div class="student-names">
-            <span>Melissa Saavedra Acuña</span>
-            <span>Udo Collantes Castañeda</span>
-            <span>Angel Casas Moreno</span>
+    </nav>
+
+    <div class="container">
+        <div class="university-info fade-in">
+            <div class="university-name">UNIVERSIDAD AUTÓNOMA DEL PERÚ</div>
+            <div class="advisor-section">
+                <div class="advisor-photo" id="advisorPhoto">👨‍🏫</div>
+                <div class="advisor-info">
+                    <div class="advisor-title">Asesor de Tesis</div>
+                    <div class="advisor-name" id="advisorName">[Nombre del Asesor]</div>
+                </div>
+            </div>
+        </div>
+
+        <header class="header fade-in">
+            <h1 class="title">PROYECTO DE TESIS 2 - GRUPO 2</h1>
+            <div class="team-members">
+                <div class="member">Melissa Saavedra Acuña</div>
+                <div class="member">Udo Collantes Castañeda</div>
+                <div class="member">Angel Casas Moreno</div>
+            </div>
+            
+            <div class="deadline-alert">
+                📅 Próxima Presentación: Jueves 5 de Junio - Avance Semana 9
+            </div>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <p>Progreso del proyecto: <span id="progressText">56%</span> (Semana 9 de 16)</p>
+        </header>
+
+        <div class="stats-section">
+            <div class="stat-card fade-in">
+                <div class="stat-number">16</div>
+                <div class="stat-label">Semanas Planificadas</div>
+            </div>
+            <div class="stat-card fade-in">
+                <div class="stat-number">9</div>
+                <div class="stat-label">Semana Actual</div>
+            </div>
+            <div class="stat-card fade-in">
+                <div class="stat-number">7</div>
+                <div class="stat-label">Días hasta Presentación</div>
+            </div>
+            <div class="stat-card fade-in">
+                <div class="stat-number">56%</div>
+                <div class="stat-label">Progreso Completado</div>
+            </div>
+        </div>
+
+        <div class="timeline-container">
+            <div class="timeline fade-in">
+                <div class="timeline-header">SEMANAS</div>
+                <div class="timeline-header">TEMAS</div>
+                <div class="timeline-header">CLASES</div>
+                <div class="timeline-header">ACTIVIDADES</div>
+                <div class="timeline-header">OBSERVACIONES</div>
+
+                <div class="timeline-row">
+                    <div class="week-number">1°</div>
+                    <div class="theme-cell">
+                        <div class="theme-title">FORMULACIÓN DEL TÍTULO DE TESIS</div>
+                        <div class="theme-list">Definición inicial del tema de investigación</div>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button">📹 ZOOM</a>
+                        <a href="#" class="action-button notes">📝 NOTAS TESIS I</a>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button document">📄 Word GRUPO 2 sem 1</a>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button observation">🖼️ IMAGEN TESIS I</a>
+                    </div>
+                </div>
+
+                <div class="timeline-row">
+                    <div class="week-number">2°</div>
+                    <div class="theme-cell">
+                        <div class="theme-title">ANÁLISIS DE TÍTULO DE TESIS DEFINIDO</div>
+                        <ul class="theme-list">
+                            <li>Identificación del problema de investigación</li>
+                            <li>Formulación de objetivos alineados al título</li>
+                        </ul>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button">📹 ZOOM</a>
+                        <a href="#" class="action-button notes">📝 NOTAS TESIS I</a>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button document">📄 Word GRUPO 2 sem 2</a>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button observation">🖼️ IMAGEN TESIS I</a>
+                        <a href="#" class="action-button observation">🖼️ IMAGEN TESIS I</a>
+                    </div>
+                </div>
+
+                <div class="timeline-row">
+                    <div class="week-number">3°</div>
+                    <div class="theme-cell">
+                        <div class="theme-title">ANÁLISIS DE TÍTULO DE TESIS DEFINIDO</div>
+                        <ul class="theme-list">
+                            <li>Identificación del problema de investigación</li>
+                            <li>Formulación de objetivos alineados al título</li>
+                        </ul>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button">📹 ZOOM</a>
+                        <a href="#" class="action-button notes">📝 NOTAS TESIS 2</a>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button document">📄 Word GRUPO 2 sem 3</a>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button observation">🖼️ IMAGEN TESIS 2</a>
+                        <a href="#" class="action-button observation">🖼️ IMAGEN TESIS 2</a>
+                    </div>
+                </div>
+
+                <!-- Semanas 5-16 con contenido expandido -->
+                <div class="timeline-row">
+                    <div class="week-number">5°</div>
+                    <div class="theme-cell">
+                        <div class="theme-title">MARCO TEÓRICO - ANTECEDENTES</div>
+                        <ul class="theme-list">
+                            <li>Investigación de antecedentes nacionales</li>
+                            <li>Investigación de antecedentes internacionales</li>
+                        </ul>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button">📹 ZOOM</a>
+                        <a href="#" class="action-button notes">📝 NOTAS TESIS 2</a>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button document">📄 Word GRUPO 2 sem 5</a>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button observation">🖼️ IMAGEN TESIS 2</a>
+                    </div>
+                </div>
+
+                <div class="timeline-row">
+                    <div class="week-number">6°</div>
+                    <div class="theme-cell">
+                        <div class="theme-title">MARCO TEÓRICO - BASES TEÓRICAS</div>
+                        <ul class="theme-list">
+                            <li>Desarrollo de bases teóricas principales</li>
+                            <li>Definición de términos básicos</li>
+                        </ul>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button">📹 ZOOM</a>
+                        <a href="#" class="action-button notes">📝 NOTAS TESIS 2</a>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button document">📄 Word GRUPO 2 sem 6</a>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button observation">🖼️ IMAGEN TESIS 2</a>
+                    </div>
+                </div>
+
+                <div class="timeline-row">
+                    <div class="week-number">7°</div>
+                    <div class="theme-cell">
+                        <div class="theme-title">HIPÓTESIS Y VARIABLES</div>
+                        <ul class="theme-list">
+                            <li>Formulación de hipótesis general y específicas</li>
+                            <li>Operacionalización de variables</li>
+                        </ul>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button">📹 ZOOM</a>
+                        <a href="#" class="action-button notes">📝 NOTAS TESIS 2</a>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button document">📄 Word GRUPO 2 sem 7</a>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button observation">🖼️ IMAGEN TESIS 2</a>
+                    </div>
+                </div>
+
+                <div class="timeline-row">
+                    <div class="week-number">8°</div>
+                    <div class="theme-cell">
+                        <div class="theme-title">METODOLOGÍA DE INVESTIGACIÓN</div>
+                        <ul class="theme-list">
+                            <li>Tipo y diseño de investigación</li>
+                            <li>Población y muestra</li>
+                        </ul>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button">📹 ZOOM</a>
+                        <a href="#" class="action-button notes">📝 NOTAS TESIS 2</a>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button document">📄 Word GRUPO 2 sem 8</a>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button observation">🖼️ IMAGEN TESIS 2</a>
+                    </div>
+                </div>
+
+                <div class="timeline-row" style="background: rgba(255, 140, 0, 0.1); border-radius: 8px; padding: 0.5rem;">
+                    <div class="week-number" style="background: linear-gradient(135deg, #ef4444, #dc2626); color: white;">9°</div>
+                    <div class="theme-cell">
+                        <div class="theme-title">🎯 PRESENTACIÓN DE AVANCE</div>
+                        <ul class="theme-list">
+                            <li><strong>ENTREGA: Jueves 5 de Junio</strong></li>
+                            <li>Revisión completa del avance</li>
+                            <li>Preparación de presentación</li>
+                        </ul>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button">📹 ZOOM</a>
+                        <a href="#" class="action-button notes">📝 NOTAS TESIS 2</a>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button document" style="background: linear-gradient(135deg, #ef4444, #dc2626);">📄 PRESENTACIÓN AVANCE</a>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button observation">🖼️ IMAGEN TESIS 2</a>
+                    </div>
+                </div>
+
+                <!-- Continuación semanas 10-16 -->
+                <div class="timeline-row">
+                    <div class="week-number">10°</div>
+                    <div class="theme-cell">
+                        <div class="theme-title">INSTRUMENTOS DE RECOLECCIÓN</div>
+                        <ul class="theme-list">
+                            <li>Diseño de instrumentos</li>
+                            <li>Validación de instrumentos</li>
+                        </ul>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button">📹 ZOOM</a>
+                        <a href="#" class="action-button notes">📝 NOTAS TESIS 2</a>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button document">📄 Word GRUPO 2 sem 10</a>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button observation">🖼️ IMAGEN TESIS 2</a>
+                    </div>
+                </div>
+
+                <div class="timeline-row">
+                    <div class="week-number">11°</div>
+                    <div class="theme-cell">
+                        <div class="theme-title">RECOLECCIÓN DE DATOS</div>
+                        <ul class="theme-list">
+                            <li>Aplicación de instrumentos</li>
+                            <li>Organización de datos</li>
+                        </ul>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button">📹 ZOOM</a>
+                        <a href="#" class="action-button notes">📝 NOTAS TESIS 2</a>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button document">📄 Word GRUPO 2 sem 11</a>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button observation">🖼️ IMAGEN TESIS 2</a>
+                    </div>
+                </div>
+
+                <div class="timeline-row">
+                    <div class="week-number">12°</div>
+                    <div class="theme-cell">
+                        <div class="theme-title">ANÁLISIS ESTADÍSTICO</div>
+                        <ul class="theme-list">
+                            <li>Análisis descriptivo</li>
+                            <li>Análisis inferencial</li>
+                        </ul>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button">📹 ZOOM</a>
+                        <a href="#" class="action-button notes">📝 NOTAS TESIS 2</a>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button document">📄 Word GRUPO 2 sem 12</a>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button observation">🖼️ IMAGEN TESIS 2</a>
+                    </div>
+                </div>
+
+                <div class="timeline-row">
+                    <div class="week-number">13°</div>
+                    <div class="theme-cell">
+                        <div class="theme-title">RESULTADOS Y DISCUSIÓN</div>
+                        <ul class="theme-list">
+                            <li>Presentación de resultados</li>
+                            <li>Discusión de hallazgos</li>
+                        </ul>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button">📹 ZOOM</a>
+                        <a href="#" class="action-button notes">📝 NOTAS TESIS 2</a>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button document">📄 Word GRUPO 2 sem 13</a>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button observation">🖼️ IMAGEN TESIS 2</a>
+                    </div>
+                </div>
+
+                <div class="timeline-row">
+                    <div class="week-number">14°</div>
+                    <div class="theme-cell">
+                        <div class="theme-title">CONCLUSIONES Y RECOMENDACIONES</div>
+                        <ul class="theme-list">
+                            <li>Formulación de conclusiones</li>
+                            <li>Elaboración de recomendaciones</li>
+                        </ul>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button">📹 ZOOM</a>
+                        <a href="#" class="action-button notes">📝 NOTAS TESIS 2</a>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button document">📄 Word GRUPO 2 sem 14</a>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button observation">🖼️ IMAGEN TESIS 2</a>
+                    </div>
+                </div>
+
+                <div class="timeline-row">
+                    <div class="week-number">15°</div>
+                    <div class="theme-cell">
+                        <div class="theme-title">REVISIÓN Y CORRECCIONES</div>
+                        <ul class="theme-list">
+                            <li>Revisión integral del documento</li>
+                            <li>Correcciones finales</li>
+                        </ul>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button">📹 ZOOM</a>
+                        <a href="#" class="action-button notes">📝 NOTAS TESIS 2</a>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button document">📄 Word GRUPO 2 sem 15</a>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button observation">🖼️ IMAGEN TESIS 2</a>
+                    </div>
+                </div>
+
+                <div class="timeline-row" style="background: rgba(5, 150, 105, 0.1); border-radius: 8px; padding: 0.5rem;">
+                    <div class="week-number" style="background: linear-gradient(135deg, #059669, #047857);">16°</div>
+                    <div class="theme-cell">
+                        <div class="theme-title">🎓 ENTREGA FINAL</div>
+                        <ul class="theme-list">
+                            <li><strong>Presentación de tesis completa</strong></li>
+                            <li>Preparación para sustentación</li>
+                        </ul>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button">📹 ZOOM</a>
+                        <a href="#" class="action-button notes">📝 NOTAS FINALES</a>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button document" style="background: linear-gradient(135deg, #059669, #047857);">📄 TESIS COMPLETA</a>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button observation">🏆 SUSTENTACIÓN</a>
+                    </div>
+                </div>
+
+                <div class="timeline-row">
+                    <div class="week-number">4°</div>
+                    <div class="theme-cell">
+                        <div class="theme-title">ANÁLISIS DE TÍTULO DE TESIS DEFINIDO</div>
+                        <ul class="theme-list">
+                            <li>Identificación del problema de investigación</li>
+                            <li>Formulación de objetivos alineados al título</li>
+                        </ul>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button">📹 ZOOM</a>
+                        <a href="#" class="action-button notes">📝 NOTAS TESIS 2</a>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button document">📄 Word GRUPO 2 sem 4</a>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button observation">🖼️ IMAGEN TESIS 2</a>
+                        <a href="#" class="action-button observation">🖼️ IMAGEN TESIS 2</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</header>
 
-    <main>
-        <table>
-            <thead>
-                <tr>
-                    <th>SEMANAS</th>
-                    <th>TEMAS</th>
-                    <th>CLASES</th>
-                    <th>ACTIVIDADES</th>
-                    <th>OBSERVACIONES</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="semana">1º</td>
-                    <td>FORMULACIÓN DEL TÍTULO DE TESIS</td>
-                    <td>
-                        <a href="#" class="btn btn-zoom"><i class="fas fa-video"></i> ZOOM</a>
-                        <a href="#" class="btn btn-notas"><i class="fas fa-book-open"></i> NOTAS TESIS I</a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-word"><i class="fas fa-file-word"></i> Word GRUPO 2 sem 1 </a>
-                        
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-imagen"><i class="fas fa-image"></i> IMAGEN TESIS I</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="semana">2º</td>
-                    <td>
-                        ANÁLISIS DE TÍTULO DE TESIS DEFINIDO
-                        <ul>
-                            <li>Identificación del problema de investigación</li>
-                            <li>Formulación de objetivos alineados al título</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-zoom"><i class="fas fa-video"></i> ZOOM</a>
-                        <a href="#" class="btn btn-notas"><i class="fas fa-book-open"></i> NOTAS TESIS I</a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-word"><i class="fas fa-file-word"></i> Word GRUPO 2 sem 2 </a>
-                        
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-imagen"><i class="fas fa-image"></i> IMAGEN TESIS I</a>
-                        <a href="#" class="btn btn-imagen"><i class="fas fa-image"></i> IMAGEN TESIS I</a>
-                    </td>
-                </tr>
-                <tr>
+    <script>
+        // Animaciones de entrada
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach((element, index) => {
+                element.style.animationDelay = `${index * 0.1}s`;
+            });
+        }
 
-                    <td class="semana">3º</td>
-                    <td>
-                        ANÁLISIS DE TÍTULO DE TESIS DEFINIDO
-                        <ul>
-                            <li>Identificación del problema de investigación</li>
-                            <li>Formulación de objetivos alineados al título</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-zoom"><i class="fas fa-video"></i> ZOOM</a>
-                        <a href="#" class="btn btn-notas"><i class="fas fa-book-open"></i> NOTAS TESIS 2</a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-word"><i class="fas fa-file-word"></i> Word GRUPO 2 sem 3 </a>
-                        
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-imagen"><i class="fas fa-image"></i> IMAGEN TESIS 2</a>
-                        <a href="#" class="btn btn-imagen"><i class="fas fa-image"></i> IMAGEN TESIS 2</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="semana">4º</td>
-                    <td>
-                        ANÁLISIS DE TÍTULO DE TESIS DEFINIDO
-                        <ul>
-                            <li>Identificación del problema de investigación</li>
-                            <li>Formulación de objetivos alineados al título</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-zoom"><i class="fas fa-video"></i> ZOOM</a>
-                        <a href="#" class="btn btn-notas"><i class="fas fa-book-open"></i> NOTAS TESIS 2</a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-word"><i class="fas fa-file-word"></i> Word GRUPO 2 sem 4 </a>
-                        
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-imagen"><i class="fas fa-image"></i> IMAGEN TESIS 2</a>
-                        <a href="#" class="btn btn-imagen"><i class="fas fa-image"></i> IMAGEN TESIS 2</a>
-                    </td>
-                </tr>
-                <tr>
+        // Actualizar progreso
+        function updateProgress() {
+            const currentWeek = 9;
+            const totalWeeks = 16;
+            const progress = (currentWeek / totalWeeks) * 100;
+            
+            document.getElementById('progressFill').style.width = `${Math.round(progress)}%`;
+            document.getElementById('progressText').textContent = `${Math.round(progress)}%`;
+        }
 
-                    <td class="semana">5º</td>
-                    <td>
-                        ANÁLISIS DE TÍTULO DE TESIS DEFINIDO
-                        <ul>
-                            <li>Identificación del problema de investigación</li>
-                            <li>Formulación de objetivos alineados al título</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-zoom"><i class="fas fa-video"></i> ZOOM</a>
-                        <a href="#" class="btn btn-notas"><i class="fas fa-book-open"></i> NOTAS TESIS 2</a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-word"><i class="fas fa-file-word"></i> Word GRUPO 2 sem 5 </a>
-                        
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-imagen"><i class="fas fa-image"></i> IMAGEN TESIS 2</a>
-                        <a href="#" class="btn btn-imagen"><i class="fas fa-image"></i> IMAGEN TESIS 2</a>
-                    </td>
-                </tr>
-                <tr>
-                    
-                    
-                    <td class="semana">6º</td>
-                    <td>
-                        ANÁLISIS DE TÍTULO DE TESIS DEFINIDO
-                        <ul>
-                            <li>Identificación del problema de investigación</li>
-                            <li>Formulación de objetivos alineados al título</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-zoom"><i class="fas fa-video"></i> ZOOM</a>
-                        <a href="#" class="btn btn-notas"><i class="fas fa-book-open"></i> NOTAS TESIS 2</a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-word"><i class="fas fa-file-word"></i> Word GRUPO 2 sem 6 </a>
-                        
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-imagen"><i class="fas fa-image"></i> IMAGEN TESIS 2</a>
-                        <a href="#" class="btn btn-imagen"><i class="fas fa-image"></i> IMAGEN TESIS 2</a>
-                    </td>
-                </tr>
-                <tr>
+        // Calcular días hasta la presentación
+        function updateDeadline() {
+            const presentationDate = new Date('2025-06-05');
+            const today = new Date();
+            const timeDiff = presentationDate - today;
+            const daysLeft = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+            
+            const statCards = document.querySelectorAll('.stat-number');
+            if (statCards.length >= 3) {
+                statCards[2].textContent = daysLeft > 0 ? daysLeft : '¡HOY!';
+                if (daysLeft <= 3) {
+                    statCards[2].style.color = '#ef4444';
+                    statCards[2].parentElement.style.animation = 'pulse 1s infinite';
+                }
+            }
+        }
 
-                    <td class="semana">7º</td>
-                    <td>
-                        ANÁLISIS DE TÍTULO DE TESIS DEFINIDO
-                        <ul>
-                            <li>Identificación del problema de investigación</li>
-                            <li>Formulación de objetivos alineados al título</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-zoom"><i class="fas fa-video"></i> ZOOM</a>
-                        <a href="#" class="btn btn-notas"><i class="fas fa-book-open"></i> NOTAS TESIS 2</a>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-word"><i class="fas fa-file-word"></i> Word GRUPO 2 sem 7 </a>
-                        
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-imagen"><i class="fas fa-image"></i> IMAGEN TESIS 2</a>
-                        <a href="#" class="btn btn-imagen"><i class="fas fa-image"></i> IMAGEN TESIS 2</a>
-                    </td>
-                </tr>
-                <tr>
+        // Función para cambiar foto del asesor
+        function changeAdvisorPhoto() {
+            const photoElement = document.getElementById('advisorPhoto');
+            const nameElement = document.getElementById('advisorName');
+            
+            // Crear input para subir imagen
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.onchange = function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        photoElement.style.backgroundImage = `url(${e.target.result})`;
+                        photoElement.style.backgroundSize = 'cover';
+                        photoElement.style.backgroundPosition = 'center';
+                        photoElement.textContent = '';
+                    };
+                    reader.readAsDataURL(file);
+                }
+            };
+            input.click();
+        }
 
-                    <td class="semana">8º</td>
-                    <td>
-                        ANÁLISIS DE TÍTULO DE TESIS DEFINIDO
-                        <ul>
-                            <li>Identificación del problema de investigación</li>
-                            <li>Formulación de objetivos alineados al título</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-zoom"><i class="fas fa-video"></i> ZOOM</a>
-                        <a href="#" class="btn btn-notas"><i class="fas fa-book-open"></i> NOTAS TESIS 2</a>
-                    </td>
-                    <td>
-                        <a href="https://docs.google.com/document/d/1sWTZmyxPyERI2VGJ9jp3r6tBLd9oWFuR/edit?usp=sharing&ouid=105218611754629414000&rtpof=true&sd=true" class="btn btn-word"><i class="fas fa-file-word"></i> Word GRUPO 2 sem 8 </a>
-                        
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-imagen"><i class="fas fa-image"></i> IMAGEN TESIS 2</a>
-                        <a href="#" class="btn btn-imagen"><i class="fas fa-image"></i> IMAGEN TESIS 2</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="semana">9º</td>
-                    <td>siguiente clase</td>
-                    <td></td>
-                    <td></td>
-                    <td>SEMANA 9 </td>
-                </tr>
-                </tbody>
-        </table>
-    </main>
+        // Función para editar nombre del asesor
+        function editAdvisorName() {
+            const nameElement = document.getElementById('advisorName');
+            const currentName = nameElement.textContent;
+            const newName = prompt('Ingrese el nombre del asesor:', currentName);
+            if (newName && newName.trim() !== '') {
+                nameElement.textContent = newName.trim();
+            }
+        }
 
+        // Interactividad en botones
+        document.querySelectorAll('.action-button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Efecto de click
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'translateY(-2px)';
+                }, 150);
+                
+                // Aquí puedes agregar la funcionalidad específica para cada botón
+                console.log('Clicked:', this.textContent);
+                
+                // Simulación de acción
+                const originalText = this.textContent;
+                this.textContent = '⏳ Cargando...';
+                this.style.opacity = '0.7';
+                
+                setTimeout(() => {
+                    this.textContent = originalText;
+                    this.style.opacity = '1';
+                }, 1000);
+            });
+        });
+
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', function() {
+            animateOnScroll();
+            updateProgress();
+            updateDeadline();
+            
+            // Agregar eventos para editar asesor
+            document.getElementById('advisorPhoto').addEventListener('click', changeAdvisorPhoto);
+            document.getElementById('advisorName').addEventListener('click', editAdvisorName);
+            
+            // Agregar tooltip
+            document.getElementById('advisorPhoto').title = 'Click para cambiar foto';
+            document.getElementById('advisorName').title = 'Click para editar nombre';
+        });
+
+        // Smooth scroll para navegación
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>

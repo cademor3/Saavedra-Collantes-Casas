@@ -1,4 +1,11 @@
-<!DOCTYPE html>
+.timeline-header {
+            background: rgba(255, 140, 0, 0.2);
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: bold;
+            text-align: center;
+            border: 1px solid rgba(255, 140, 0, 0.3);
+        }<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -211,23 +218,24 @@
         }
 
         .timeline {
-            display: grid;
-            grid-template-columns: 80px 1fr 200px 200px 200px;
+            display: flex;
+            flex-direction: column;
             gap: 1rem;
             margin-bottom: 2rem;
         }
 
-        .timeline-header {
-            background: rgba(255, 140, 0, 0.2);
-            padding: 1rem;
-            border-radius: 8px;
-            font-weight: bold;
-            text-align: center;
-            border: 1px solid rgba(255, 140, 0, 0.3);
+        .timeline-header-row {
+            display: grid;
+            grid-template-columns: 80px 1fr 200px 200px 200px;
+            gap: 1rem;
+            margin-bottom: 1rem;
         }
 
         .timeline-row {
-            display: contents;
+            display: grid;
+            grid-template-columns: 80px 1fr 200px 200px 200px;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
         }
 
         .week-number {
@@ -355,13 +363,17 @@
         }
 
         @media (max-width: 768px) {
-            .timeline {
+            .timeline-header-row {
+                display: none;
+            }
+            
+            .timeline-row {
                 grid-template-columns: 1fr;
                 gap: 1rem;
-            }
-
-            .timeline-header {
-                display: none;
+                background: rgba(255, 255, 255, 0.05) !important;
+                padding: 1rem !important;
+                border-radius: 8px !important;
+                margin-bottom: 1rem !important;
             }
 
             .team-members {

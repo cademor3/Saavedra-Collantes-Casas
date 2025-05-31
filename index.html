@@ -85,6 +85,14 @@
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
+            cursor: default;
+        }
+
+        .advisor-photo img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
         }
 
         .advisor-info {
@@ -401,10 +409,12 @@
         <div class="university-info fade-in">
             <div class="university-name">UNIVERSIDAD AUTÓNOMA DEL PERÚ</div>
             <div class="advisor-section">
-                <div class="advisor-photo" id="advisorPhoto">👨‍🏫</div>
+                <div class="advisor-photo" id="advisorPhoto">
+                    <img src="hugo-vega-huerta.jpg" alt="Dr. Hugo Vega Huerta" onerror="this.style.display='none'; this.parentElement.innerHTML='👨‍🏫';">
+                </div>
                 <div class="advisor-info">
                     <div class="advisor-title">Asesor de Tesis</div>
-                    <div class="advisor-name" id="advisorName">[Nombre del Asesor]</div>
+                    <div class="advisor-name" id="advisorName">Dr. Hugo Vega Huerta</div>
                 </div>
             </div>
         </div>
@@ -832,10 +842,15 @@
             }
         }
 
+        // Variables globales para almacenar datos del asesor
+        let advisorData = {
+            photo: null,
+            name: 'Dr. Hugo Vega Huerta'
+        };
+
         // Función para cambiar foto del asesor
         function changeAdvisorPhoto() {
             const photoElement = document.getElementById('advisorPhoto');
-            const nameElement = document.getElementById('advisorName');
             
             // Crear input para subir imagen
             const input = document.createElement('input');
@@ -846,10 +861,19 @@
                 if (file) {
                     const reader = new FileReader();
                     reader.onload = function(e) {
-                        photoElement.style.backgroundImage = `url(${e.target.result})`;
+                        const imageData = e.target.result;
+                        
+                        // Guardar imagen en variable global
+                        advisorData.photo = imageData;
+                        
+                        // Aplicar imagen
+                        photoElement.style.backgroundImage = `url(${imageData})`;
                         photoElement.style.backgroundSize = 'cover';
                         photoElement.style.backgroundPosition = 'center';
                         photoElement.textContent = '';
+                        
+                        // Mostrar confirmación
+                        showNotification('📸 Foto del asesor actualizada');
                     };
                     reader.readAsDataURL(file);
                 }
@@ -863,8 +887,71 @@
             const currentName = nameElement.textContent;
             const newName = prompt('Ingrese el nombre del asesor:', currentName);
             if (newName && newName.trim() !== '') {
-                nameElement.textContent = newName.trim();
+                const finalName = newName.trim();
+                nameElement.textContent = finalName;
+                
+                // Guardar nombre en variable global
+                advisorData.name = finalName;
+                
+                // Mostrar confirmación
+                showNotification('✏️ Nombre del asesor actualizado');
             }
+        }
+
+        // Función para cargar datos guardados del asesor
+        function loadAdvisorData() {
+            const photoElement = document.getElementById('advisorPhoto');
+            const nameElement = document.getElementById('advisorName');
+            
+            // Cargar foto guardada
+            if (advisorData.photo) {
+                photoElement.style.backgroundImage = `url(${advisorData.photo})`;
+                photoElement.style.backgroundSize = 'cover';
+                photoElement.style.backgroundPosition = 'center';
+                photoElement.textContent = '';
+            }
+            
+            // Cargar nombre guardado
+            if (advisorData.name && advisorData.name !== '[Nombre del Asesor]') {
+                nameElement.textContent = advisorData.name;
+            }
+        }
+
+        // Función para mostrar notificaciones
+        function showNotification(message) {
+            // Crear elemento de notificación
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: linear-gradient(135deg, #ff8c00, #ffa500);
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 8px;
+                font-weight: bold;
+                z-index: 1000;
+                box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3);
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+            `;
+            notification.textContent = message;
+            
+            // Agregar al body
+            document.body.appendChild(notification);
+            
+            // Mostrar animación
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            // Ocultar después de 3 segundos
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
         }
 
         // Interactividad en botones
@@ -899,13 +986,10 @@
             updateProgress();
             updateDeadline();
             
-            // Agregar eventos para editar asesor
-            document.getElementById('advisorPhoto').addEventListener('click', changeAdvisorPhoto);
-            document.getElementById('advisorName').addEventListener('click', editAdvisorName);
+            // El asesor ya está definido en el HTML, no necesita carga adicional
             
-            // Agregar tooltip
-            document.getElementById('advisorPhoto').title = 'Click para cambiar foto';
-            document.getElementById('advisorName').title = 'Click para editar nombre';
+            // Nota: La foto y nombre del asesor están fijos en el código
+            // Visible para todos los visitantes del sitio
         });
 
         // Smooth scroll para navegación

@@ -1,11 +1,4 @@
-.timeline-header {
-            background: rgba(255, 140, 0, 0.2);
-            padding: 1rem;
-            border-radius: 8px;
-            font-weight: bold;
-            text-align: center;
-            border: 1px solid rgba(255, 140, 0, 0.3);
-        }<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -54,6 +47,30 @@
         .logo::before {
             content: "🏛️";
             margin-right: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 140, 0, 0.2);
+            color: #ff8c00;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
         }
 
         .university-info {
@@ -136,30 +153,6 @@
             }
         }
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: #ffffff;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            background: rgba(255, 140, 0, 0.2);
-            color: #ff8c00;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
         .header {
             text-align: center;
             margin-bottom: 3rem;
@@ -208,7 +201,7 @@
         .progress-fill {
             height: 100%;
             background: linear-gradient(90deg, #ff8c00, #ffa500);
-            width: 25%;
+            width: 56%;
             border-radius: 4px;
             transition: width 0.5s ease;
         }
@@ -229,6 +222,15 @@
             grid-template-columns: 80px 1fr 200px 200px 200px;
             gap: 1rem;
             margin-bottom: 1rem;
+        }
+
+        .timeline-header {
+            background: rgba(255, 140, 0, 0.2);
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: bold;
+            text-align: center;
+            border: 1px solid rgba(255, 140, 0, 0.3);
         }
 
         .timeline-row {
@@ -459,7 +461,7 @@
                 <div class="stat-label">Semana Actual</div>
             </div>
             <div class="stat-card fade-in">
-                <div class="stat-number">7</div>
+                <div class="stat-number" id="daysLeft">7</div>
                 <div class="stat-label">Días hasta Presentación</div>
             </div>
             <div class="stat-card fade-in">
@@ -470,11 +472,13 @@
 
         <div class="timeline-container">
             <div class="timeline fade-in">
-                <div class="timeline-header">SEMANAS</div>
-                <div class="timeline-header">TEMAS</div>
-                <div class="timeline-header">CLASES</div>
-                <div class="timeline-header">ACTIVIDADES</div>
-                <div class="timeline-header">OBSERVACIONES</div>
+                <div class="timeline-header-row">
+                    <div class="timeline-header">SEMANAS</div>
+                    <div class="timeline-header">TEMAS</div>
+                    <div class="timeline-header">CLASES</div>
+                    <div class="timeline-header">ACTIVIDADES</div>
+                    <div class="timeline-header">OBSERVACIONES</div>
+                </div>
 
                 <div class="timeline-row">
                     <div class="week-number">1°</div>
@@ -538,7 +542,28 @@
                     </div>
                 </div>
 
-                <!-- Semanas 5-16 con contenido expandido -->
+                <div class="timeline-row">
+                    <div class="week-number">4°</div>
+                    <div class="theme-cell">
+                        <div class="theme-title">ANÁLISIS DE TÍTULO DE TESIS DEFINIDO</div>
+                        <ul class="theme-list">
+                            <li>Identificación del problema de investigación</li>
+                            <li>Formulación de objetivos alineados al título</li>
+                        </ul>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button">📹 ZOOM</a>
+                        <a href="#" class="action-button notes">📝 NOTAS TESIS 2</a>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button document">📄 Word GRUPO 2 sem 4</a>
+                    </div>
+                    <div class="action-cell">
+                        <a href="#" class="action-button observation">🖼️ IMAGEN TESIS 2</a>
+                        <a href="#" class="action-button observation">🖼️ IMAGEN TESIS 2</a>
+                    </div>
+                </div>
+
                 <div class="timeline-row">
                     <div class="week-number">5°</div>
                     <div class="theme-cell">
@@ -645,7 +670,6 @@
                     </div>
                 </div>
 
-                <!-- Continuación semanas 10-16 -->
                 <div class="timeline-row">
                     <div class="week-number">10°</div>
                     <div class="theme-cell">
@@ -735,288 +759,4 @@
                     <div class="theme-cell">
                         <div class="theme-title">CONCLUSIONES Y RECOMENDACIONES</div>
                         <ul class="theme-list">
-                            <li>Formulación de conclusiones</li>
-                            <li>Elaboración de recomendaciones</li>
-                        </ul>
-                    </div>
-                    <div class="action-cell">
-                        <a href="#" class="action-button">📹 ZOOM</a>
-                        <a href="#" class="action-button notes">📝 NOTAS TESIS 2</a>
-                    </div>
-                    <div class="action-cell">
-                        <a href="#" class="action-button document">📄 Word GRUPO 2 sem 14</a>
-                    </div>
-                    <div class="action-cell">
-                        <a href="#" class="action-button observation">🖼️ IMAGEN TESIS 2</a>
-                    </div>
-                </div>
-
-                <div class="timeline-row">
-                    <div class="week-number">15°</div>
-                    <div class="theme-cell">
-                        <div class="theme-title">REVISIÓN Y CORRECCIONES</div>
-                        <ul class="theme-list">
-                            <li>Revisión integral del documento</li>
-                            <li>Correcciones finales</li>
-                        </ul>
-                    </div>
-                    <div class="action-cell">
-                        <a href="#" class="action-button">📹 ZOOM</a>
-                        <a href="#" class="action-button notes">📝 NOTAS TESIS 2</a>
-                    </div>
-                    <div class="action-cell">
-                        <a href="#" class="action-button document">📄 Word GRUPO 2 sem 15</a>
-                    </div>
-                    <div class="action-cell">
-                        <a href="#" class="action-button observation">🖼️ IMAGEN TESIS 2</a>
-                    </div>
-                </div>
-
-                <div class="timeline-row" style="background: rgba(5, 150, 105, 0.1); border-radius: 8px; padding: 0.5rem;">
-                    <div class="week-number" style="background: linear-gradient(135deg, #059669, #047857);">16°</div>
-                    <div class="theme-cell">
-                        <div class="theme-title">🎓 ENTREGA FINAL</div>
-                        <ul class="theme-list">
-                            <li><strong>Presentación de tesis completa</strong></li>
-                            <li>Preparación para sustentación</li>
-                        </ul>
-                    </div>
-                    <div class="action-cell">
-                        <a href="#" class="action-button">📹 ZOOM</a>
-                        <a href="#" class="action-button notes">📝 NOTAS FINALES</a>
-                    </div>
-                    <div class="action-cell">
-                        <a href="#" class="action-button document" style="background: linear-gradient(135deg, #059669, #047857);">📄 TESIS COMPLETA</a>
-                    </div>
-                    <div class="action-cell">
-                        <a href="#" class="action-button observation">🏆 SUSTENTACIÓN</a>
-                    </div>
-                </div>
-
-                <div class="timeline-row">
-                    <div class="week-number">4°</div>
-                    <div class="theme-cell">
-                        <div class="theme-title">ANÁLISIS DE TÍTULO DE TESIS DEFINIDO</div>
-                        <ul class="theme-list">
-                            <li>Identificación del problema de investigación</li>
-                            <li>Formulación de objetivos alineados al título</li>
-                        </ul>
-                    </div>
-                    <div class="action-cell">
-                        <a href="#" class="action-button">📹 ZOOM</a>
-                        <a href="#" class="action-button notes">📝 NOTAS TESIS 2</a>
-                    </div>
-                    <div class="action-cell">
-                        <a href="#" class="action-button document">📄 Word GRUPO 2 sem 4</a>
-                    </div>
-                    <div class="action-cell">
-                        <a href="#" class="action-button observation">🖼️ IMAGEN TESIS 2</a>
-                        <a href="#" class="action-button observation">🖼️ IMAGEN TESIS 2</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Animaciones de entrada
-        function animateOnScroll() {
-            const elements = document.querySelectorAll('.fade-in');
-            elements.forEach((element, index) => {
-                element.style.animationDelay = `${index * 0.1}s`;
-            });
-        }
-
-        // Actualizar progreso
-        function updateProgress() {
-            const currentWeek = 9;
-            const totalWeeks = 16;
-            const progress = (currentWeek / totalWeeks) * 100;
-            
-            document.getElementById('progressFill').style.width = `${Math.round(progress)}%`;
-            document.getElementById('progressText').textContent = `${Math.round(progress)}%`;
-        }
-
-        // Calcular días hasta la presentación
-        function updateDeadline() {
-            const presentationDate = new Date('2025-06-05');
-            const today = new Date();
-            const timeDiff = presentationDate - today;
-            const daysLeft = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
-            
-            const statCards = document.querySelectorAll('.stat-number');
-            if (statCards.length >= 3) {
-                statCards[2].textContent = daysLeft > 0 ? daysLeft : '¡HOY!';
-                if (daysLeft <= 3) {
-                    statCards[2].style.color = '#ef4444';
-                    statCards[2].parentElement.style.animation = 'pulse 1s infinite';
-                }
-            }
-        }
-
-        // Variables globales para almacenar datos del asesor
-        let advisorData = {
-            photo: null,
-            name: 'Dr. Hugo Vega Huerta'
-        };
-
-        // Función para cambiar foto del asesor
-        function changeAdvisorPhoto() {
-            const photoElement = document.getElementById('advisorPhoto');
-            
-            // Crear input para subir imagen
-            const input = document.createElement('input');
-            input.type = 'file';
-            input.accept = 'image/*';
-            input.onchange = function(e) {
-                const file = e.target.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        const imageData = e.target.result;
-                        
-                        // Guardar imagen en variable global
-                        advisorData.photo = imageData;
-                        
-                        // Aplicar imagen
-                        photoElement.style.backgroundImage = `url(${imageData})`;
-                        photoElement.style.backgroundSize = 'cover';
-                        photoElement.style.backgroundPosition = 'center';
-                        photoElement.textContent = '';
-                        
-                        // Mostrar confirmación
-                        showNotification('📸 Foto del asesor actualizada');
-                    };
-                    reader.readAsDataURL(file);
-                }
-            };
-            input.click();
-        }
-
-        // Función para editar nombre del asesor
-        function editAdvisorName() {
-            const nameElement = document.getElementById('advisorName');
-            const currentName = nameElement.textContent;
-            const newName = prompt('Ingrese el nombre del asesor:', currentName);
-            if (newName && newName.trim() !== '') {
-                const finalName = newName.trim();
-                nameElement.textContent = finalName;
-                
-                // Guardar nombre en variable global
-                advisorData.name = finalName;
-                
-                // Mostrar confirmación
-                showNotification('✏️ Nombre del asesor actualizado');
-            }
-        }
-
-        // Función para cargar datos guardados del asesor
-        function loadAdvisorData() {
-            const photoElement = document.getElementById('advisorPhoto');
-            const nameElement = document.getElementById('advisorName');
-            
-            // Cargar foto guardada
-            if (advisorData.photo) {
-                photoElement.style.backgroundImage = `url(${advisorData.photo})`;
-                photoElement.style.backgroundSize = 'cover';
-                photoElement.style.backgroundPosition = 'center';
-                photoElement.textContent = '';
-            }
-            
-            // Cargar nombre guardado
-            if (advisorData.name && advisorData.name !== '[Nombre del Asesor]') {
-                nameElement.textContent = advisorData.name;
-            }
-        }
-
-        // Función para mostrar notificaciones
-        function showNotification(message) {
-            // Crear elemento de notificación
-            const notification = document.createElement('div');
-            notification.style.cssText = `
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                background: linear-gradient(135deg, #ff8c00, #ffa500);
-                color: white;
-                padding: 1rem 1.5rem;
-                border-radius: 8px;
-                font-weight: bold;
-                z-index: 1000;
-                box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3);
-                transform: translateX(100%);
-                transition: transform 0.3s ease;
-            `;
-            notification.textContent = message;
-            
-            // Agregar al body
-            document.body.appendChild(notification);
-            
-            // Mostrar animación
-            setTimeout(() => {
-                notification.style.transform = 'translateX(0)';
-            }, 100);
-            
-            // Ocultar después de 3 segundos
-            setTimeout(() => {
-                notification.style.transform = 'translateX(100%)';
-                setTimeout(() => {
-                    document.body.removeChild(notification);
-                }, 300);
-            }, 3000);
-        }
-
-        // Interactividad en botones
-        document.querySelectorAll('.action-button').forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                // Efecto de click
-                this.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    this.style.transform = 'translateY(-2px)';
-                }, 150);
-                
-                // Aquí puedes agregar la funcionalidad específica para cada botón
-                console.log('Clicked:', this.textContent);
-                
-                // Simulación de acción
-                const originalText = this.textContent;
-                this.textContent = '⏳ Cargando...';
-                this.style.opacity = '0.7';
-                
-                setTimeout(() => {
-                    this.textContent = originalText;
-                    this.style.opacity = '1';
-                }, 1000);
-            });
-        });
-
-        // Inicializar
-        document.addEventListener('DOMContentLoaded', function() {
-            animateOnScroll();
-            updateProgress();
-            updateDeadline();
-            
-            // El asesor ya está definido en el HTML, no necesita carga adicional
-            
-            // Nota: La foto y nombre del asesor están fijos en el código
-            // Visible para todos los visitantes del sitio
-        });
-
-        // Smooth scroll para navegación
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+                            <li>Formulación de conclusiones

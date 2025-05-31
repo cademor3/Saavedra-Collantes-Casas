@@ -1,0 +1,89 @@
+/* Estilos generales del cuerpo */
+body {
+    background-color: #1a1a1a; /* Fondo oscuro */
+    color: #f0f0f0; /* Texto claro */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Estilo del encabezado principal */
+header h1 {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+/* Contenedor principal */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Estilos de la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse; /* Une los bordes de las celdas */
+    background-color: #2b2b2b;
+}
+
+/* Estilos de las celdas de encabezado (th) y celdas de datos (td) */
+th, td {
+    border: 1px solid #444;
+    padding: 15px;
+    text-align: left;
+    vertical-align: top;
+}
+
+/* Estilos solo para los encabezados de la tabla */
+thead th {
+    background-color: #1f1f1f;
+    color: #e6c300; /* Color amarillo/dorado */
+    font-size: 1.1em;
+    text-align: center;
+}
+
+/* Estilos para la columna de semanas */
+td.semana {
+    font-weight: bold;
+    font-size: 2em;
+    color: #e6c300;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Estilos para las listas dentro de las celdas */
+td ul {
+    padding-left: 20px;
+    margin-top: 10px;
+    color: #ccc;
+}
+
+/* Estilo base para todos los botones/enlaces */
+.btn {
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.btn:hover {
+    transform: scale(1.05); /* Efecto de zoom al pasar el mouse */
+}
+
+/* Íconos dentro de los botones */
+.btn i {
+    margin-right: 8px;
+}
+
+/* Colores específicos para cada tipo de botón */
+.btn-zoom { background-color: #2d8cff; }
+.btn-notas { background-color: #6a6a6a; }
+.btn-word { background-color: #2b579a; }
+.btn-imagen { background-color: #00a693; }

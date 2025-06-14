@@ -226,10 +226,10 @@
         .form-select, .form-input {
             width: 100%;
             padding: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 140, 0, 0.3);
             border-radius: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
+            background: rgba(26, 26, 26, 0.9);
+            color: #ffffff;
             font-size: 1rem;
         }
 
@@ -237,6 +237,23 @@
             outline: none;
             border-color: #ff8c00;
             box-shadow: 0 0 0 2px rgba(255, 140, 0, 0.2);
+        }
+
+        /* Estilos específicos para las opciones del select */
+        .form-select option {
+            background: #1a1a1a;
+            color: #ffffff;
+            padding: 0.5rem;
+            border: none;
+        }
+
+        .form-select option:hover {
+            background: rgba(255, 140, 0, 0.2);
+        }
+
+        .form-select option:checked {
+            background: rgba(255, 140, 0, 0.3);
+            color: #ff8c00;
         }
 
         .file-drop-zone {
